@@ -115,8 +115,8 @@ clusterRequire <- function(cluster, package) {
 #' @export
 stopCluster <- function(cluster) {
   if (class(cluster)[1] != "noCluster") {
-    snow::stopCluster.default(cluster)
     ParallelLogger::logTrace("Stopping cluster")
+    snow::stopCluster.default(cluster)
   }
 }
 
@@ -243,7 +243,7 @@ formatError <- function(threadNumber, error, args) {
   addQuotes <- function(arg) {
     if (is.character(arg))
       return(shQuote(arg))
-    else 
+    else
       return(arg)
   }
   values <- sapply(args, addQuotes)
